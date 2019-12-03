@@ -5,7 +5,7 @@ module.exports = {
     node: true
   },
   parserOptions: {
-    parser: 'babel-eslint'
+    // parser: 'babel-eslint'
   },
   extends: [
     '@nuxtjs',
@@ -14,6 +14,11 @@ module.exports = {
   // add your custom rules here
   rules: {
     'nuxt/no-cjs-in-config': 'off',
-    'arrow-parens': 'off'
+    'arrow-parens': 'off',
+    'space-before-function-paren': 'off',
+    'quotes': 'off',
+    'eol-last': 'off',
+    'semi': 'off',
+    'vue/singleline-html-element-content-newline': 'off'
   }
 }

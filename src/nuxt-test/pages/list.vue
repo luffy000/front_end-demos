@@ -3,10 +3,9 @@
     <div>
       <logo />
       <h1 class="title">{{ title }}</h1>
-      <h2 class="subtitle">My Nuxt project</h2>
+      <h2 class="subtitle">My top-notch Nuxt.js project</h2>
       <div class="links">
-        <a href="./list" target="_blank" class="button--green">goList</a>
-        <a href="./detail" target="_blank" class="button--grey">goDetail</a>
+        <a href="./detail" target="_blank" class="button--green">goDetail</a>
       </div>
     </div>
   </div>
@@ -43,7 +42,12 @@ export default {
   methods: {
     getTest() {
       api
-        .home()
+        .list({
+          appId: "609381314952429568",
+          pageIndex: 1,
+          pageSize: 10000,
+          terminal: 1
+        })
         .then(res => {
           this.title = res.name;
           console.log(res);

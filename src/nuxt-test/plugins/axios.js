@@ -4,14 +4,17 @@ import crypto from '~/plugins/crypto'
 const SECRET = process.env.SECRET
 
 const options = {
-  headers: { 'X-Requested-With': 'XMLHttpRequest' },
+  headers: {
+    'X-Requested-With': 'XMLHttpRequest'
+  },
   timeout: 30000,
   baseURL: '/api'
 }
 
 // The server-side needs a full url to works
 if (process.server) {
-  options.baseURL = `http://${process.env.HOST || 'localhost'}:${process.env.PORT || 3000}/api`
+  // options.baseURL = `http://${process.env.HOST || 'localhost'}:${process.env.PORT || 3000}/api`
+  options.baseURL = `http://scorpio.test.mgp.mi.com/scorpio-cms/api/v1/article/`
   options.withCredentials = true
 }
 
@@ -23,7 +26,10 @@ instance.interceptors.request.use(
     const param = `timestamp=${timestamp}&secret=${SECRET}`
     const sign = crypto(param)
 
-    config.params = Object.assign({}, config.params, { timestamp, sign })
+    config.params = Object.assign({}, config.params, {
+      timestamp,
+      sign
+    })
     return config
   }
 )
